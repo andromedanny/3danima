@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandTalk - Sign Language Translator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Three.js for 3D animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo-icon">🤟</div>
+                <span class="logo-text">HandTalk</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Translate Text to
+                    <span class="gradient-text">Sign Language</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Break down communication barriers with real-time 3D sign language translation. 
+                    Making communication accessible for everyone.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary btn-large" id="startBtn">
+                        <span>Start Translating</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="avatar-preview">
+                    <div class="avatar-circle">
+                        <div class="avatar-face">
+                            <div class="avatar-eyes">
+                                <div class="eye"></div>
+                                <div class="eye"></div>
+                            </div>
+                            <div class="avatar-mouth"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Translator Section -->
+    <section class="translator-section" id="translator">
+        <div class="container">
+            <div class="translator-wrapper">
+                <!-- Input Panel -->
+                <div class="panel input-panel">
+                    <div class="panel-header">
+                        <h2>Enter Your Text</h2>
+                        <div class="language-selector">
+                            <select id="languageSelect" class="select-input">
+                                <option value="asl">American Sign Language (ASL)</option>
+                                <option value="bsl">British Sign Language (BSL)</option>
+                                <option value="libras">Libras (Brazilian)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="input-container">
+                        <textarea 
+                            id="textInput" 
+                            class="text-input"
+                            placeholder="Type your message here or use voice input..."
+                            rows="5"
+                        ></textarea>
+                        <div class="input-footer">
+                            <div class="input-actions">
+                                <button id="voiceBtn" class="btn btn-icon" aria-label="Voice input">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M10 2C8.9 2 8 2.9 8 4V10C8 11.1 8.9 12 10 12C11.1 12 12 11.1 12 10V4C12 2.9 11.1 2 10 2Z" fill="currentColor"/>
+                                        <path d="M16 9V10C16 13.3 13.3 16 10 16C6.7 16 4 13.3 4 10V9H2V10C2 14.4 5.6 18 10 18C14.4 18 18 14.4 18 10V9H16Z" fill="currentColor"/>
+                                        <path d="M10 14C11.1 14 12 13.1 12 12V8H8V12C8 13.1 8.9 14 10 14Z" fill="currentColor"/>
+                                    </svg>
+                                    <span>Voice</span>
+                                </button>
+                                <button id="translateBtn" class="btn btn-primary">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M10 2L12 8H18L13.5 11.5L15 18L10 14.5L5 18L6.5 11.5L2 8H8L10 2Z" fill="currentColor"/>
+                                    </svg>
+                                    <span>Translate</span>
+                                </button>
+                                <button id="clearBtn" class="btn btn-secondary">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <span>Clear</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="voiceStatus" class="voice-status hidden">
+                        <div class="voice-indicator">
+                            <div class="pulse-dot"></div>
+                            <span>Listening...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Panel -->
+                <div class="panel output-panel">
+                    <div class="panel-header">
+                        <h2>Sign Language Translation</h2>
+                        <div class="sign-badge" id="signLanguageBadge">ASL</div>
+                    </div>
+                    
+                    <div class="avatar-display">
+                        <div id="avatarContainer" class="avatar-container">
+                            <canvas class="avatar-3d"></canvas>
+                        </div>
+                        <div id="signTextDisplay" class="sign-text-display">
+                            <p class="placeholder-text">Your translation will appear here</p>
+                        </div>
+                    </div>
+
+                    <div id="translationInfo" class="translation-info"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Features</h2>
+                <p class="section-subtitle">Everything you need for accessible communication</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Text Translation</h3>
+                    <p>Translate any text into sign language with accurate 3D animations</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎤</div>
+                    <h3>Voice Input</h3>
+                    <p>Speak naturally and get instant sign language translation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Multiple Languages</h3>
+                    <p>Support for ASL, BSL, Libras and more sign languages</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>3D Animations</h3>
+                    <p>Realistic 3D avatar demonstrating sign language gestures</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Works perfectly on desktop, tablet, and mobile devices</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♿</div>
+                    <h3>Accessible</h3>
+                    <p>Designed with accessibility in mind for everyone</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About HandTalk</h2>
+                <p class="about-text">
+                    HandTalk is dedicated to breaking down communication barriers through technology. 
+                    Our mission is to make sign language accessible to everyone, whether you're learning, 
+                    communicating, or just curious about this beautiful language.
+                </p>
+                <p class="about-text">
+                    We use cutting-edge 3D animation technology to provide accurate and natural sign 
+                    language translations, helping to bridge the gap between hearing and Deaf communities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-icon">🤟</div>
+                    <span class="logo-text">HandTalk</span>
+                </div>
+                <p class="footer-text">
+                    &copy; 2024 HandTalk. Making communication accessible for everyone.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

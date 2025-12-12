@@ -1,0 +1,20 @@
+{
+  "name": "3danima-gltf-converter",
+  "version": "1.0.0",
+  "description": "Local GLTF to GLB converter to bypass online file size limits",
+  "main": "convert-gltf-to-glb.js",
+  "scripts": {
+    "convert": "node convert-gltf-to-glb.js",
+    "serve": "npx http-server -p 8080 -c-1"
+  },
+  "dependencies": {
+    "@gltf-transform/core": "^3.7.0",
+    "@gltf-transform/functions": "^3.7.0",
+    "@gltf-transform/cli": "^3.7.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "type": "module"
+}
+

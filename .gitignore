@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables and secrets
+.env
+.env.local
+*.key
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Build files (if you add any)
+dist/
+build/
+*.min.js
+*.min.css
+
+# Database files (if any)
+*.db
+*.sqlite
+*.sqlite3
+
+# Large model files (optional - uncomment if you want to exclude GLB files)
+# *.glb
+# *.gltf
+
+# PHP session files
+*.sess
+
+# Backup files
+*.bak
+*.backup
+
