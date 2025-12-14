@@ -5,6 +5,8 @@
   "main": "convert-gltf-to-glb.js",
   "scripts": {
     "convert": "node convert-gltf-to-glb.js",
+    "convert-fbx": "node convert-fbx-to-glb-npx.js",
+    "batch-convert": "node batch-convert-fbx.js",
     "serve": "npx http-server -p 8080 -c-1"
   },
   "dependencies": {

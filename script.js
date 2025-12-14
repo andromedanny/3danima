@@ -1,4 +1,4 @@
-// HandTalk Website Application
+// Hear Me in Signs Website Application
 class HandTalkApp {
     constructor() {
         this.recognition = null;
@@ -25,30 +25,117 @@ class HandTalkApp {
     }
 
     setupASLAnimations() {
-        // Map words/phrases to GLB file paths in assets/models/asl/
-        // Add your GLB files here as you download them
+        // Map words/phrases to GLB file paths
+        // All FBX files should be converted to GLB format (like hello.glb)
+        // GLB files are placed in: assets/models/asl/
         this.aslAnimations = {
-            // Phrases
-            'good morning': 'assets/models/asl/good-morning.glb',
-            'good afternoon': 'assets/models/asl/good-afternoon.glb',
-            'good night': 'assets/models/asl/good-night.glb',
-            'how are you': 'assets/models/asl/how-are-you.glb',
-            'thank you': 'assets/models/asl/thank-you.glb',
-            'thank you very much': 'assets/models/asl/thank-you-very-much.glb',
+            // Phrases (longest first for proper matching)
+            'between you and me': 'assets/models/asl/betweenyouandme.glb',
+            'between me and them': 'assets/models/asl/betweenmeandthem.glb',
+            'belong to them': 'assets/models/asl/belongtothem.glb',
+            'belong to me': 'assets/models/asl/belongtome.glb',
+            'new year resolution': 'assets/models/asl/newyearresolution.glb',
+            'back and forth': 'assets/models/asl/backandforth.glb',
+            'ask for it': 'assets/models/asl/askforit.glb',
+            'ask around': 'assets/models/asl/askaround.glb',
+            'ask away': 'assets/models/asl/askaway.glb',
+            'at once': 'assets/models/asl/atonce.glb',
+            'at last': 'assets/models/asl/atlast.glb',
+            'as well': 'assets/models/asl/aswell.glb',
+            'my name is': 'assets/models/asl/mynameis.glb',
+            'new year': 'assets/models/asl/newyear2025.glb',
+            'turn off': 'assets/models/asl/turnoff.glb',
+            'back away': 'assets/models/asl/backaway.glb',
+            'back up': 'assets/models/asl/backup.glb',
+            'bad breath': 'assets/models/asl/badbreath.glb',
+            'bad mouthing': 'assets/models/asl/badmouthing.glb',
+            'been a while': 'assets/models/asl/beenawhile.glb',
+            'been there': 'assets/models/asl/beenthere.glb',
+            'best friend': 'assets/models/asl/bestfriend.glb',
+            
+            // Numbers (0-10) - GLB files are in the main asl/ folder
+            '0': 'assets/models/asl/0.glb',
+            '1': 'assets/models/asl/1.glb',
+            '2': 'assets/models/asl/2.glb',
+            '3': 'assets/models/asl/3.glb',
+            '4': 'assets/models/asl/4.glb',
+            '5': 'assets/models/asl/5.glb',
+            '6': 'assets/models/asl/6.glb',
+            '7': 'assets/models/asl/7.glb',
+            '8': 'assets/models/asl/8.glb',
+            '9': 'assets/models/asl/9.glb',
+            '10': 'assets/models/asl/10.glb',
+            
+            // Letters (A-Z) - using GLB files from main folder
+            'a': 'assets/models/asl/A.glb',
+            'b': 'assets/models/asl/B.glb',
+            'c': 'assets/models/asl/C.glb',
+            'd': 'assets/models/asl/D.glb',
+            'e': 'assets/models/asl/E.glb',
+            'f': 'assets/models/asl/F.glb',
+            'g': 'assets/models/asl/G.glb',
+            'h': 'assets/models/asl/H.glb',
+            'i': 'assets/models/asl/I.glb',
+            'j': 'assets/models/asl/J.glb',
+            'k': 'assets/models/asl/K.glb',
+            'l': 'assets/models/asl/L.glb',
+            'm': 'assets/models/asl/M.glb',
+            'n': 'assets/models/asl/N.glb',
+            'o': 'assets/models/asl/O.glb',
+            'p': 'assets/models/asl/P.glb',
+            'q': 'assets/models/asl/Q.glb',
+            'r': 'assets/models/asl/R.glb',
+            's': 'assets/models/asl/S.glb',
+            't': 'assets/models/asl/T.glb',
+            'u': 'assets/models/asl/U.glb',
+            'v': 'assets/models/asl/V.glb',
+            'w': 'assets/models/asl/W.glb',
+            'x': 'assets/models/asl/X.glb',
+            'y': 'assets/models/asl/Y.glb',
+            'z': 'assets/models/asl/Z.glb',
             
             // Individual words
             'hello': 'assets/models/asl/hello.glb',
-            'goodbye': 'assets/models/asl/goodbye.glb',
-            'yes': 'assets/models/asl/yes.glb',
-            'no': 'assets/models/asl/no.glb',
+            'my': 'assets/models/asl/my.glb',
             'please': 'assets/models/asl/please.glb',
-            'sorry': 'assets/models/asl/sorry.glb',
-            'help': 'assets/models/asl/help.glb',
-            'good': 'assets/models/asl/good.glb',
-            'night': 'assets/models/asl/night.glb',
-            'morning': 'assets/models/asl/morning.glb',
-            'afternoon': 'assets/models/asl/afternoon.glb',
-            // Add more as you get files...
+            'mynameis': 'assets/models/asl/mynameis.glb',
+            'another': 'assets/models/asl/another.glb',
+            'anybody': 'assets/models/asl/anybody.glb',
+            'anymore': 'assets/models/asl/anymore.glb',
+            'anyone': 'assets/models/asl/anyone.glb',
+            'anything': 'assets/models/asl/anything.glb',
+            'anytime': 'assets/models/asl/anytime.glb',
+            'anywhere': 'assets/models/asl/anywhere.glb',
+            'apart': 'assets/models/asl/apart.glb',
+            'apparently': 'assets/models/asl/apparently.glb',
+            'around': 'assets/models/asl/around.glb',
+            'as': 'assets/models/asl/as.glb',
+            'aside': 'assets/models/asl/aside.glb',
+            'ask': 'assets/models/asl/ask.glb',
+            'asleep': 'assets/models/asl/asleep.glb',
+            'everyone': 'assets/models/asl/everyone.glb',
+            'this': 'assets/models/asl/this.glb',
+            'where': 'assets/models/asl/where.glb',
+            'which': 'assets/models/asl/which.glb',
+            'you': 'assets/models/asl/you.glb',
+            'baby': 'assets/models/asl/baby.glb',
+            'beauty': 'assets/models/asl/beauty.glb',
+            'became': 'assets/models/asl/became.glb',
+            'because': 'assets/models/asl/because.glb',
+            'bedtime': 'assets/models/asl/bedtime.glb',
+            'been': 'assets/models/asl/been.glb',
+            'before': 'assets/models/asl/before.glb',
+            'begin': 'assets/models/asl/begin.glb',
+            'behalf': 'assets/models/asl/behalf.glb',
+            'behind': 'assets/models/asl/behind.glb',
+            'belong': 'assets/models/asl/belong.glb',
+            'below': 'assets/models/asl/below.glb',
+            'beside': 'assets/models/asl/beside.glb',
+            'best': 'assets/models/asl/best.glb',
+            'better': 'assets/models/asl/better.glb',
+            'between': 'assets/models/asl/between.glb',
+            'beware': 'assets/models/asl/beware.glb',
+            'bye': 'assets/models/asl/bye.glb'
         };
         
         // Sort phrases by length (longest first) for proper matching
@@ -78,8 +165,8 @@ class HandTalkApp {
             1000
         );
         // Camera positioned to show head and upper body - focus on head area
-        this.camera.position.set(0, 2.0, 3.5);
-        this.camera.lookAt(0, 1.5, 0);
+        this.camera.position.set(0, 5.0, 4.5);
+        this.camera.lookAt(0, 4.0, 0);
 
         // Renderer setup
         this.renderer = new THREE.WebGLRenderer({
@@ -164,56 +251,256 @@ class HandTalkApp {
     }
 
     loadModel(path) {
-        if (!path || typeof THREE === 'undefined' || typeof THREE.GLTFLoader === 'undefined') {
+        if (!path || typeof THREE === 'undefined') {
             return;
         }
 
-        const loader = new THREE.GLTFLoader();
+        // Determine file type and use appropriate loader
+        const fileExtension = path.toLowerCase().split('.').pop();
+        let loader;
+        let isFBX = false;
+
+        if (fileExtension === 'fbx') {
+            if (typeof THREE.FBXLoader === 'undefined') {
+                console.error('FBXLoader not loaded. Please include FBXLoader.js');
+                return;
+            }
+            loader = new THREE.FBXLoader();
+            isFBX = true;
+        } else if (fileExtension === 'glb' || fileExtension === 'gltf') {
+            if (typeof THREE.GLTFLoader === 'undefined') {
+                console.error('GLTFLoader not loaded. Please include GLTFLoader.js');
+                return;
+            }
+            loader = new THREE.GLTFLoader();
+        } else {
+            console.error('Unsupported file format. Use .fbx, .glb, or .gltf');
+            return;
+        }
         
         loader.load(
             path,
-            (gltf) => {
+            (result) => {
+                console.log(`✅ Model loaded: ${path}`);
+                console.log('Result type:', result.constructor.name);
+                
                 // Remove placeholder
                 if (this.model) {
                     this.scene.remove(this.model);
                 }
 
-                this.model = gltf.scene;
-                this.scene.add(this.model);
+                // Handle both FBX and GLTF/GLB formats
+                let scene;
+                let animations = [];
 
-                // Center and scale
+                if (isFBX) {
+                    // FBX format - result is already a THREE.Group or THREE.Object3D
+                    scene = result;
+                    console.log('FBX scene children:', scene.children.length);
+                    
+                    // Check if scene has any meshes (character model)
+                    let hasMeshes = false;
+                    scene.traverse((child) => {
+                        if (child instanceof THREE.Mesh) {
+                            hasMeshes = true;
+                            console.log('Found mesh:', child.name);
+                        }
+                    });
+                    
+                    if (!hasMeshes) {
+                        console.warn('⚠️ FBX file has no meshes! This might be a "No Mesh" version.');
+                        console.warn('💡 Solution: Use "Mesh" version or convert to GLB format.');
+                    }
+                    
+                    // FBX animations are stored in the mixer differently
+                    // Check if there are animations in the FBX file
+                    if (result.animations && result.animations.length > 0) {
+                        animations = result.animations;
+                        console.log(`Found ${animations.length} animation(s) in result.animations`);
+                    } else {
+                        // Sometimes FBX animations are in children
+                        result.traverse((child) => {
+                            if (child.animations && child.animations.length > 0) {
+                                animations.push(...child.animations);
+                                console.log(`Found ${child.animations.length} animation(s) in child: ${child.name}`);
+                            }
+                        });
+                    }
+                } else {
+                    // GLTF/GLB format
+                    scene = result.scene;
+                    console.log('GLB/GLTF scene children:', scene.children.length);
+                    if (result.animations && result.animations.length > 0) {
+                        animations = result.animations;
+                        console.log(`Found ${animations.length} animation(s)`);
+                    }
+                }
+
+                // Check if scene is empty
+                if (!scene || scene.children.length === 0) {
+                    console.error('❌ Loaded scene is empty!');
+                    console.error('This might be a "No Mesh" FBX file. Try converting to GLB or using a "Mesh" version.');
+                    if (!this.model) {
+                        this.createPlaceholderAvatar();
+                    }
+                    return;
+                }
+
+                this.model = scene;
+                
+                // Ensure model is visible
+                this.model.visible = true;
+                
+                // Make sure all children are visible too
+                this.model.traverse((child) => {
+                    child.visible = true;
+                });
+                
+                this.scene.add(this.model);
+                console.log('✅ Model added to scene');
+
+                // Center and scale FIRST (before rotation)
                 const box = new THREE.Box3().setFromObject(this.model);
                 const center = box.getCenter(new THREE.Vector3());
                 const size = box.getSize(new THREE.Vector3());
                 const maxDim = Math.max(size.x, size.y, size.z);
-                const scale = 6 / maxDim; // Larger avatar
+                
+                console.log('Model size:', size);
+                console.log('Model center:', center);
+                console.log('Max dimension:', maxDim);
+                
+                if (maxDim > 0) {
+                    // Check if this is a fingerspelling model (numbers/letters) vs word model
+                    // Numbers are single digits (0-10) and letters are A-Z
+                    const fileName = path.split('/').pop();
+                    const isFingerspelling = /^[A-Z0-9]\.glb$/i.test(fileName) || /^\d+\.glb$/i.test(fileName);
+                    
+                    // Use same scaling and positioning approach for ALL models (including "hello")
+                    // This ensures consistent rendering regardless of file format differences
+                    // Reduced scale to make avatar smaller
+                    const scale = 4 / maxDim;
+                    this.model.scale.set(scale, scale, scale);
+                    
+                    // Standard positioning - center model at origin
+                    // All models (hello, numbers, letters) use the same positioning logic
+                    this.model.position.set(-center.x * scale, -center.y * scale, -center.z * scale);
+                    
+                    console.log('✅ Model scaled and positioned (uniform for all models)');
+                    console.log('Final position:', this.model.position);
+                    console.log('Final scale:', this.model.scale);
+                    console.log('Model center (before scaling):', center);
+                    console.log('Model size (before scaling):', size);
+                    
+                    // Adjust camera to look at the model's actual position
+                    const modelY = this.model.position.y;
+                    
+                    // Position camera - use same position for all models (hello, numbers, letters)
+                    // All models now use the same camera position for consistency
+                    this.camera.position.set(0, modelY + 4.0, 4.5);
+                    this.camera.lookAt(0, modelY + 2.5, 0);
+                    console.log('✅ Camera positioned uniformly for all models');
+                    console.log('Camera positioned at:', this.camera.position);
+                    console.log('Camera looking at:', new THREE.Vector3(0, modelY + (isFingerspelling ? 1.5 : 4.0), 0));
+                    
+                    // Reset rotations first
+                    this.model.rotation.x = 0;
+                    this.model.rotation.y = 0;
+                    this.model.rotation.z = 0;
+                    
+                    // isFingerspelling and fileName are already declared above, reuse them
+                    
+                    if (isFingerspelling) {
+                        // Numbers and letters - use default orientation (no rotation)
+                        // Reverted rotation changes - keep models in their original orientation
+                        this.model.rotation.x = 0;
+                        this.model.rotation.y = 0;
+                        this.model.rotation.z = 0;
+                        
+                        console.log('🔢🔤 Fingerspelling model - using default orientation (no rotation)');
+                        console.log('Model rotation:', this.model.rotation);
+                    } else {
+                        // Word models like "hello" are already correct
+                        console.log('✅ Word model - using default orientation');
+                    }
+                    
+                    console.log('Model rotation:', this.model.rotation);
+                    console.log('Is fingerspelling:', isFingerspelling);
+                    
+                    // Additional debug: Check if meshes are visible
+                    let visibleMeshCount = 0;
+                    this.model.traverse((child) => {
+                        if (child.isMesh) {
+                            if (child.visible) visibleMeshCount++;
+                            console.log(`Mesh: ${child.name}, visible: ${child.visible}, position:`, child.position);
+                        }
+                    });
+                    console.log(`Visible meshes: ${visibleMeshCount}`);
+                } else {
+                    console.warn('⚠️ Model has zero size - might be empty');
+                    console.warn('This could mean the GLB file has no geometry');
+                }
 
-                this.model.scale.multiplyScalar(scale);
-                this.model.position.sub(center.multiplyScalar(scale));
-                // Position model much lower in the view
-                this.model.position.y = -2.5;
+                // Debug: Log model visibility and structure
+                console.log('Model visible:', this.model.visible);
+                console.log('Model children count:', this.model.children.length);
+                console.log('Model position:', this.model.position);
+                console.log('Model rotation:', this.model.rotation);
+                
+                // Check if model has meshes
+                let meshCount = 0;
+                this.model.traverse((child) => {
+                    if (child.isMesh) {
+                        meshCount++;
+                        console.log(`Mesh ${meshCount}:`, child.name, 'visible:', child.visible, 'position:', child.position);
+                    }
+                });
+                console.log(`Total meshes found: ${meshCount}`);
+                
+                if (meshCount === 0) {
+                    console.error('❌ No meshes found in model! The GLB file might be empty or corrupted.');
+                    console.error('File path:', path);
+                }
+                
+                // Fix rotation - TEMPORARILY DISABLED to test if model shows up
+                // If model shows but is upside down, we'll re-enable with correct axis
+                // const isFingerspelling = path.includes('/glb/') || /^[A-Z0-9]\.glb$/i.test(path.split('/').pop());
+                // if (isFingerspelling) {
+                //     this.model.rotation.y = Math.PI;
+                //     console.log('✅ Applied rotation correction');
+                // }
 
                 // Setup animations
-                if (gltf.animations && gltf.animations.length > 0) {
+                if (animations.length > 0) {
+                    console.log(`✅ Setting up ${animations.length} animation(s)`);
                     this.mixer = new THREE.AnimationMixer(this.model);
-                    gltf.animations.forEach((clip) => {
+                    animations.forEach((clip) => {
                         const action = this.mixer.clipAction(clip);
                         action.setLoop(THREE.LoopOnce); // Play once, no loop
                         this.animations[clip.name] = action;
                     });
                     // Play first animation
-                    if (gltf.animations.length > 0) {
-                        this.playAnimation(gltf.animations[0].name);
+                    if (animations.length > 0) {
+                        this.playAnimation(animations[0].name);
+                        console.log(`✅ Playing animation: ${animations[0].name}`);
                     }
+                } else {
+                    console.warn('⚠️ No animations found in the model');
                 }
             },
             (progress) => {
-                console.log(`Loading: ${(progress.loaded / progress.total * 100).toFixed(2)}%`);
+                if (progress.lengthComputable) {
+                    const percent = (progress.loaded / progress.total * 100).toFixed(2);
+                    console.log(`Loading: ${percent}%`);
+                }
             },
             (error) => {
-                console.error('Error loading model:', error);
+                console.error('❌ Error loading model:', error);
+                console.error('File path:', path);
+                console.error('Error details:', error.message || error);
+                
                 // Create placeholder as fallback if load fails
                 if (!this.model) {
+                    console.log('Creating placeholder avatar as fallback');
                     this.createPlaceholderAvatar();
                 }
             }

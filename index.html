@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HandTalk - Sign Language Translator</title>
+    <title>Hear Me in Signs - Sign Language Translator</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,10 @@
     <!-- Three.js for 3D animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <!-- FBXLoader for direct FBX file support - fflate.min.js MUST load before FBXLoader.js -->
+    <!-- Using the exact file that Three.js FBXLoader expects -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/fflate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -18,7 +22,7 @@
         <div class="nav-container">
             <div class="nav-brand">
                 <div class="logo-icon">🤟</div>
-                <span class="logo-text">HandTalk</span>
+                <span class="logo-text">Hear Me in Signs</span>
             </div>
             <div class="nav-menu">
                 <a href="#home" class="nav-link active">Home</a>
@@ -169,11 +173,6 @@
                     <p>Speak naturally and get instant sign language translation</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Multiple Languages</h3>
-                    <p>Support for ASL, BSL, Libras and more sign languages</p>
-                </div>
-                <div class="feature-card">
                     <div class="feature-icon">🎨</div>
                     <h3>3D Animations</h3>
                     <p>Realistic 3D avatar demonstrating sign language gestures</p>
@@ -196,15 +195,18 @@
     <section id="about" class="about-section">
         <div class="container">
             <div class="about-content">
-                <h2 class="section-title">About HandTalk</h2>
+                <h2 class="section-title">About Hear Me in Signs</h2>
                 <p class="about-text">
-                    HandTalk is dedicated to breaking down communication barriers through technology. 
+                    Hear Me in Signs is dedicated to breaking down communication barriers through technology. 
                     Our mission is to make sign language accessible to everyone, whether you're learning, 
                     communicating, or just curious about this beautiful language.
                 </p>
                 <p class="about-text">
                     We use cutting-edge 3D animation technology to provide accurate and natural sign 
                     language translations, helping to bridge the gap between hearing and Deaf communities.
+                </p>
+                <p class="about-text" style="margin-top: 1.5rem; font-weight: 500;">
+                    Created in the Municipality of Talisay, Batangas, Philippines
                 </p>
             </div>
         </div>
@@ -216,10 +218,11 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo-icon">🤟</div>
-                    <span class="logo-text">HandTalk</span>
+                    <span class="logo-text">Hear Me in Signs</span>
                 </div>
                 <p class="footer-text">
-                    &copy; 2024 HandTalk. Making communication accessible for everyone.
+                    &copy; 2024 Hear Me in Signs. Making communication accessible for everyone.<br>
+                    <span style="font-size: 0.9rem; opacity: 0.8;">Municipality of Talisay, Batangas, Philippines</span>
                 </p>
             </div>
         </div>
